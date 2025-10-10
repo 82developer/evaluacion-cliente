@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Evaluacion.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Evaluacion.Infrastructure.Persistence
             : base(options) { }
 
         // Example DbSets
-        //public DbSet<User> Users => Set<User>();
+        public DbSet<Cliente> Users => Set<Cliente>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
