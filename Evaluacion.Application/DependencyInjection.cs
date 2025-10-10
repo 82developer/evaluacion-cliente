@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MediatR;
+using FluentValidation;
 using System.Reflection;
+using Evaluacion.Application.Behaviors;
 
 namespace Evaluacion.Application
 {
@@ -7,17 +10,14 @@ namespace Evaluacion.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            // 🔹 Registrar automáticamente todos los handlers (Commands & Queries)
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
 
-            // 🔹 (Opcional) Registrar behaviors del pipeline
-            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
-            // 🔹 (Opcional) Registrar validadores o cualquier otro servicio de Application
-            // services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }
