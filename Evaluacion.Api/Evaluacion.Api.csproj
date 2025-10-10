@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Evaluacion.Application\Evaluacion.Application.csproj" />
+    <ProjectReference Include="..\Evaluacion.Infrastructure\Evaluacion.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
