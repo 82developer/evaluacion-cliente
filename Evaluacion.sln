@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36429.23 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluacion.Api", "WebApplication1\Evaluacion.Api.csproj", "{9FE06FC8-296A-42B2-86F7-0B288892C62D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluacion.Api", "Evaluacion.Api\Evaluacion.Api.csproj", "{9FE06FC8-296A-42B2-86F7-0B288892C62D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluacion.Application", "Evaluacion.Application\Evaluacion.Application.csproj", "{7E9C3AB9-27A9-4E26-9787-00BDE6E74419}"
 EndProject
