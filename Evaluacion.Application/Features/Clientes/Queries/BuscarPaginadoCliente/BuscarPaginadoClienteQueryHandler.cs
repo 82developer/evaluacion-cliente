@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evaluacion.Application.Features.Clientes.Queries.BuscarCliente
+namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente
 {
     public class BuscarPaginadoClienteQueryHandler
     {
