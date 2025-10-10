@@ -7,6 +7,18 @@ namespace Evaluacion.Application.Features.Clientes.Commands.CrearCliente
     {
         public CrearClienteCommandValidator()
         {
+            RuleFor(x => x.Ruc)
+                .NotEmpty()
+                .WithMessage("El RUC es obligatorio.");
+            RuleFor(x => x.RazonSocial)
+                .NotEmpty()
+                .WithMessage("El RazonSocial es obligatorio.");
+            RuleFor(x => x.Telefono)
+                .GreaterThan(0)
+                .WithMessage("El Telefono es obligatorio.");
+            RuleFor(x => x.Correo)
+                .NotEmpty()
+                .WithMessage("El Correo es obligatorio.");
         }
     }
 }
