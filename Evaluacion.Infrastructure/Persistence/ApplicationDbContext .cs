@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -10,16 +10,16 @@ namespace Evaluacion.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {
-        //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        //    : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
 
-        //// Example DbSets
-        ////public DbSet<User> Users => Set<User>();
+        // Example DbSets
+        //public DbSet<User> Users => Set<User>();
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    // Fluent API mappings here
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            // Fluent API mappings here
+        }
     }
 }
