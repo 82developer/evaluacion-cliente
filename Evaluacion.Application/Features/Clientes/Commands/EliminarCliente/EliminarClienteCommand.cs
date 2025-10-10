@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Evaluacion.Application.Features.Clientes.Commands.EliminarCliente
 {
-    public class EliminarClienteCommand
+    public class EliminarClienteCommand: IRequest<int>
     {
+        public int Id { get; set; }
     }
 }
