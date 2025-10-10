@@ -20,6 +20,30 @@ namespace Evaluacion.Api.Controllers
             var id = await _mediator.Send(command);
             return Ok(id);
         }
+        [HttpPatch]
+        public async Task<IActionResult> Update([FromBody] CrearClienteCommand command)
+        {
+            var id = await _mediator.Send(command);
+            return Ok(id);
+        }
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] CrearClienteCommand command)
+        {
+            var id = await _mediator.Send(command);
+            return Ok(id);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetOne([FromBody] CrearClienteCommand command)
+        {
+            var id = await _mediator.Send(command);
+            return Ok(id);
+        }
+        [HttpGet("page")]
+        public async Task<IActionResult> GetPage([FromBody] CrearClienteCommand command)
+        {
+            var id = await _mediator.Send(command);
+            return Ok(id);
+        }
 
     }
 }
