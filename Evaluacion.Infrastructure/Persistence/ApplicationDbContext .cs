@@ -23,16 +23,18 @@ namespace Evaluacion.Infrastructure.Persistence
             modelBuilder.Entity<Cliente>(
                 e =>
                 {
-                    e.ToTable("cliente");
+                    e.ToTable("CLIENTE");
                     e.HasKey(x => x.Id);
                     e.Property(x => x.Id)
+                     .HasColumnName("ID")
                      .ValueGeneratedOnAdd()
                      .HasDefaultValueSql("SEQ_CLIENTE.NEXTVAL");
 
-                    e.Property(x => x.Ruc).HasMaxLength(11).IsRequired();
-                    e.Property(x => x.RazonSocial).HasMaxLength(200).IsRequired();
-                    e.Property(x => x.Telefono).HasMaxLength(20);
-                    e.Property(x => x.Correo).HasMaxLength(100);
+                    e.Property(x => x.Ruc).HasColumnName("RUC").HasMaxLength(11).IsRequired();
+                    e.Property(x => x.RazonSocial).HasColumnName("RAZONSOCIAL").HasMaxLength(200).IsRequired();
+                    e.Property(x => x.Telefono).HasColumnName("TELEFONO").HasMaxLength(20);
+                    e.Property(x => x.Correo).HasColumnName("CORREO").HasMaxLength(100);
+                    e.Property(x => x.Direccion).HasColumnName("DIRECCION").HasMaxLength(200);
                     //e.Property(x => x.FechaRegistro).HasColumnType("DATE");
                 });
 

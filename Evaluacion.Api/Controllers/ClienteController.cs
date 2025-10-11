@@ -39,7 +39,7 @@ namespace Evaluacion.Api.Controllers
             var response = await _mediator.Send(new EliminarClienteCommand(id));
             return Ok(response);
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetOne([FromRoute] int id)
         {
             var response = await _mediator.Send(new BuscarPorIdClienteQuery(id));

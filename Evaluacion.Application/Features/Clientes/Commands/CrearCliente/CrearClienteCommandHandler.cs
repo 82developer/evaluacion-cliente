@@ -22,12 +22,13 @@ namespace Evaluacion.Application.Features.Clientes.Commands.CrearCliente
         }
         public async Task<int> Handle(CrearClienteCommand request, CancellationToken cancellationToken)
         {
+            await using var tx = await _uow.BeginTransactionAsync(cancellationToken);
             try
             {
-                await _uow.BeginTransactionAsync();
                 var cliente = _mapper.Map<Cliente>(request);
                 var result = await _clienteRepository.CrearAsync(cliente);
                 await _uow.SaveChangesAsync(cancellationToken);
+                await tx.CommitAsync(cancellationToken);
                 return result;
             }
             catch (Exception)
