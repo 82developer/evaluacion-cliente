@@ -9,3 +9,13 @@
 /WebApplication1
 /Evaluacion.Api/bin/Debug/net8.0
 /Evaluacion.Api/obj
+/BackEnd/.vs
+/BackEnd/Evaluacion.Api/bin/Debug/net8.0/runtimes
+/BackEnd/Evaluacion.Api/bin/Debug/net8.0
+/BackEnd/Evaluacion.Api/obj
+/BackEnd/Evaluacion.Application/bin/Debug/net8.0
+/BackEnd/Evaluacion.Application/obj
+/BackEnd/Evaluacion.Domain/bin/Debug/net8.0
+/BackEnd/Evaluacion.Domain/obj
+/BackEnd/Evaluacion.Infrastructure/bin/Debug/net8.0
+/BackEnd/Evaluacion.Infrastructure/obj
