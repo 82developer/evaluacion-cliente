@@ -1,6 +1,9 @@
-﻿namespace Evaluacion.Application.Features.Clientes.Commands.ModificarCliente
+﻿using MediatR;
+
+namespace Evaluacion.Application.Features.Clientes.Commands.ModificarCliente
 {
     public class ModificarClienteCommand
+        :IRequest<bool>
     {
         public ModificarClienteCommand(
             int id,
