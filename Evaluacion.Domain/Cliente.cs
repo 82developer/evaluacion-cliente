@@ -2,6 +2,7 @@
 {
     public class Cliente
     {
+        public int Id { get; set; }
         public string Ruc { get; set; }
         public string RazonSocial { get; set; }
         public string Telefono { get; set; }

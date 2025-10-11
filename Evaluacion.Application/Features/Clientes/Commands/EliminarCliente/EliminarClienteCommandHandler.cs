@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Evaluacion.Application.Repositories;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,18 @@ namespace Evaluacion.Application.Features.Clientes.Commands.EliminarCliente
     public class EliminarClienteCommandHandler
           : IRequestHandler<EliminarClienteCommand, int>
     {
-        public Task<int> Handle(EliminarClienteCommand request, CancellationToken cancellationToken)
+
+        private readonly IClienteRepository _clienteRepository;
+        public EliminarClienteCommandHandler(
+            IClienteRepository clienteRepository
+            )
         {
-            throw new NotImplementedException();
+           _clienteRepository = clienteRepository; 
+        }
+        public async Task<int> Handle(EliminarClienteCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _clienteRepository.EliminarAsync(request.Id);
+            return 1;
         }
     }
 }

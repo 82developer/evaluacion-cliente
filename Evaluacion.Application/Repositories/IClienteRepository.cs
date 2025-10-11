@@ -9,10 +9,10 @@ namespace Evaluacion.Application.Repositories
 {
     public interface IClienteRepository
     {
-        Task<int> Crear(Cliente cliente);
-        Task<int> Actualizar(Cliente cliente);
-        Task<int> Eliminar(int id);
-        Task<Cliente> ObtenerPorId(int id);
-        Task<List<Cliente>> ObtenerTodos(int pagina, int tamanoPagina);
+        Task<int> CrearAsync(Cliente cliente);
+        Task<bool> ActualizarAsync(Cliente cliente);
+        Task<bool> EliminarAsync(int id);
+        Task<Cliente?> ObtenerPorIdAsync(int id);
+        Task<List<Cliente>> ObtenerTodosAsync(int pagina, int tamanoPagina);
     }
 }

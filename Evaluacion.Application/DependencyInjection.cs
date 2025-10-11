@@ -17,7 +17,7 @@ namespace Evaluacion.Application
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             return services;
         }

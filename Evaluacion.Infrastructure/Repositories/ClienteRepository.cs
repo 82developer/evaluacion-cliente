@@ -1,6 +1,7 @@
 ﻿using Evaluacion.Application.Repositories;
 using Evaluacion.Domain;
 using Evaluacion.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,27 +19,47 @@ namespace Evaluacion.Infrastructure.Repositories
             _db = db;
         }
 
-        public async Task<int> Actualizar(Cliente cliente)
+        public async Task<bool> ActualizarAsync(Cliente cliente)
         {
-            throw new NotImplementedException();
+            var existing = await _db.Users.FirstOrDefaultAsync(c => c.Id == cliente.Id);
+
+            existing.Ruc = cliente.Ruc;
+            existing.RazonSocial = cliente.RazonSocial;
+            existing.Telefono = cliente.Telefono;
+            existing.Correo = cliente.Correo;
+
+            _db.Users.Update(existing);
+            await _db.SaveChangesAsync();
+            return true;
         }
 
-        public async Task<int> Crear(Cliente cliente)
+        public async Task<int> CrearAsync(Cliente cliente)
         {
-            throw new NotImplementedException();
+            await _db.Users.AddAsync(cliente);
+            await _db.SaveChangesAsync();
+            return cliente.Id;
         }
 
-        public async Task<int> Eliminar(int id)
+        public async Task<bool> EliminarAsync(int id)
         {
-            throw new NotImplementedException();
+            var cliente = await _db.Users.FirstOrDefaultAsync(c => c.Id == id);
+            if (cliente == null)
+                return false;
+
+            _db.Users.Remove(cliente);
+            await _db.SaveChangesAsync();
+            return true;
         }
 
-        public async Task<Cliente> ObtenerPorId(int id)
+        public async Task<Cliente?> ObtenerPorIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _db.Users
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync(c => c.Id == id);
+            return result;
         }
 
-        public async Task<List<Cliente>> ObtenerTodos(int pagina, int tamanoPagina)
+        public async Task<List<Cliente>> ObtenerTodosAsync(int pagina, int tamanoPagina)
         {
             throw new NotImplementedException();
         }

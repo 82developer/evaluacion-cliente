@@ -20,6 +20,22 @@ namespace Evaluacion.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Cliente>(
+                e =>
+                {
+                    e.ToTable("cliente");
+                    e.HasKey(x => x.Id);
+                    e.Property(x => x.Id)
+                     .ValueGeneratedOnAdd()
+                     .HasDefaultValueSql("SEQ_CLIENTE.NEXTVAL");
+
+                    e.Property(x => x.Ruc).HasMaxLength(11).IsRequired();
+                    e.Property(x => x.RazonSocial).HasMaxLength(200).IsRequired();
+                    e.Property(x => x.Telefono).HasMaxLength(20);
+                    e.Property(x => x.Correo).HasMaxLength(100);
+                    //e.Property(x => x.FechaRegistro).HasColumnType("DATE");
+                });
+
             // Fluent API mappings here
         }
     }
