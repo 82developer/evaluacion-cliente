@@ -20,12 +20,13 @@ namespace Evaluacion.Application.Features.Clientes.Commands.ModificarCliente
 
         public async Task<bool> Handle(ModificarClienteCommand request, CancellationToken cancellationToken)
         {
+            await using var tx = await _uow.BeginTransactionAsync(cancellationToken);
             try
             {
-                await _uow.BeginTransactionAsync();
                 var cliente = _mapper.Map<Cliente>(request);
                 var result = await _clienteRepository.ActualizarAsync(cliente);
                 await _uow.SaveChangesAsync(cancellationToken);
+                await tx.CommitAsync(cancellationToken);
                 return result;
             }
             catch (Exception)

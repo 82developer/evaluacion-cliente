@@ -27,8 +27,8 @@ namespace Evaluacion.Infrastructure.Persistence
                     e.HasKey(x => x.Id);
                     e.Property(x => x.Id)
                      .HasColumnName("ID")
-                     .ValueGeneratedOnAdd()
-                     .HasDefaultValueSql("SEQ_CLIENTE.NEXTVAL");
+                     .ValueGeneratedOnAdd();
+                     //.HasDefaultValueSql("SEQ_CLIENTE.NEXTVAL");
 
                     e.Property(x => x.Ruc).HasColumnName("RUC").HasMaxLength(11).IsRequired();
                     e.Property(x => x.RazonSocial).HasColumnName("RAZONSOCIAL").HasMaxLength(200).IsRequired();
@@ -37,8 +37,6 @@ namespace Evaluacion.Infrastructure.Persistence
                     e.Property(x => x.Direccion).HasColumnName("DIRECCION").HasMaxLength(200);
                     //e.Property(x => x.FechaRegistro).HasColumnType("DATE");
                 });
-
-            // Fluent API mappings here
         }
     }
 }

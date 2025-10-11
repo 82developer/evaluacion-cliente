@@ -22,11 +22,12 @@ namespace Evaluacion.Application.Features.Clientes.Commands.EliminarCliente
         }
         public async Task<bool> Handle(EliminarClienteCommand request, CancellationToken cancellationToken)
         {
+            await using var tx = await _uow.BeginTransactionAsync(cancellationToken);
             try
             {
-                await _uow.BeginTransactionAsync();
                 var result = await _clienteRepository.EliminarAsync(request.Id);
                 await _uow.SaveChangesAsync(cancellationToken);
+                await tx.CommitAsync(cancellationToken);
                 return result;
             }
             catch (Exception)
