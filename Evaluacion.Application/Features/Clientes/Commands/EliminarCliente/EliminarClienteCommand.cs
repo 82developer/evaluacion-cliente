@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Evaluacion.Application.Features.Clientes.Commands.EliminarCliente
 {
-    public class EliminarClienteCommand: IRequest<int>
+    public class EliminarClienteCommand: IRequest<bool>
     {
         public int Id { get; set; }
     }

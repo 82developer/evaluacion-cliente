@@ -9,20 +9,31 @@ using System.Threading.Tasks;
 namespace Evaluacion.Application.Features.Clientes.Commands.EliminarCliente
 {
     public class EliminarClienteCommandHandler
-          : IRequestHandler<EliminarClienteCommand, int>
+          : IRequestHandler<EliminarClienteCommand, bool>
     {
-
         private readonly IClienteRepository _clienteRepository;
+        private readonly IUnitOfWork _uow;
         public EliminarClienteCommandHandler(
-            IClienteRepository clienteRepository
-            )
+            IClienteRepository clienteRepository ,
+            IUnitOfWork uow)
         {
-           _clienteRepository = clienteRepository; 
+            _clienteRepository = clienteRepository;
+            _uow = uow;
         }
-        public async Task<int> Handle(EliminarClienteCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(EliminarClienteCommand request, CancellationToken cancellationToken)
         {
-            var result = await _clienteRepository.EliminarAsync(request.Id);
-            return 1;
+            try
+            {
+                await _uow.BeginTransactionAsync();
+                var result = await _clienteRepository.EliminarAsync(request.Id);
+                await _uow.SaveChangesAsync(cancellationToken);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

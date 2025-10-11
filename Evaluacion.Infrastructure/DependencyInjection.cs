@@ -26,6 +26,8 @@ namespace Evaluacion.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseOracle(connStr)
             );
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

@@ -29,14 +29,14 @@ namespace Evaluacion.Infrastructure.Repositories
             existing.Correo = cliente.Correo;
 
             _db.Users.Update(existing);
-            await _db.SaveChangesAsync();
+            //await _db.SaveChangesAsync();
             return true;
         }
 
         public async Task<int> CrearAsync(Cliente cliente)
         {
             await _db.Users.AddAsync(cliente);
-            await _db.SaveChangesAsync();
+            //await _db.SaveChangesAsync();
             return cliente.Id;
         }
 
@@ -47,7 +47,7 @@ namespace Evaluacion.Infrastructure.Repositories
                 return false;
 
             _db.Users.Remove(cliente);
-            await _db.SaveChangesAsync();
+            //await _db.SaveChangesAsync();
             return true;
         }
 
