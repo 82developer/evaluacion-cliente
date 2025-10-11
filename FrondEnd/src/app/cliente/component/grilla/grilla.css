@@ -1,0 +1,241 @@
+:root {
+  --bg: #ffffff;
+  --fg: #0f172a;           /* slate-900 */
+  --muted: #475569;        /* slate-600 */
+  --border: #e2e8f0;       /* slate-200 */
+  --row-alt: #f8fafc;      /* slate-50 */
+  --row-hover: #f1f5f9;    /* slate-100 */
+  --success: #16a34a;      /* green-600 */
+  --warning: #d97706;      /* amber-600 */
+  --danger:  #dc2626;      /* red-600 */
+  --badge-bg: #eef2ff;     /* indigo-50 */
+  --radius: 12px;
+  --shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1020;
+    --fg: #e5e7eb;
+    --muted: #cbd5e1;
+    --border: #1f2937;
+    --row-alt: #0e162a;
+    --row-hover: #172036;
+    --badge-bg: #111827;
+  }
+}
+
+.grilla {
+  background: var(--bg);
+  color: var(--fg);
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.grilla__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.grilla__header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.grilla__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.grilla__table-wrap {
+  width: 100%;
+  overflow-x: auto;       /* Enables horizontal scroll on narrow screens */
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 4px);
+}
+
+/* Table base */
+.grilla__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 720px;       /* Keep columns readable on small viewports */
+  font-size: 0.95rem;
+}
+
+/* Header */
+.grilla__table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 700;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* Cells */
+.grilla__table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+/* Zebra rows */
+.grilla__table tbody tr:nth-child(even) {
+  background: var(--row-alt);
+}
+
+/* Hover */
+.grilla__table tbody tr:hover {
+  background: var(--row-hover);
+}
+
+/* First / last cell rounding when scrolled to start */
+.grilla__table thead th:first-child,
+.grilla__table tbody td:first-child {
+  padding-left: 16px;
+}
+.grilla__table thead th:last-child,
+.grilla__table tbody td:last-child {
+  padding-right: 16px;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  line-height: 1;
+  background: var(--badge-bg);
+  border: 1px solid var(--border);
+  user-select: none;
+}
+.badge--success { color: var(--success); }
+.badge--warning { color: var(--warning); }
+.badge--danger  { color: var(--danger);  }
+
+/* Optional: shrink long emails but keep them selectable */
+.grilla__table td:nth-child(4) {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* Header layout: title on the left, actions on the right */
+.grilla__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* pushes the button to the right */
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.grilla__title {
+  display: grid;
+  gap: 4px;
+}
+
+.grilla__actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Button styles */
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--fg);
+  transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 8px rgba(2, 6, 23, 0.06);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  background: linear-gradient(0deg, rgba(99,102,241,0.08), rgba(99,102,241,0.08));
+  border-color: #a5b4fc; /* indigo-300 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn--primary {
+    background: linear-gradient(0deg, rgba(99,102,241,0.16), rgba(99,102,241,0.16));
+    border-color: #4f46e5; /* indigo-600 */
+  }
+}
+
+
+/* Make room for the new Actions column */
+.grilla__table {
+  min-width: 860px; /* previously 720px */
+}
+
+/* Actions column header and cells */
+.col-actions {
+  text-align: right;
+  width: 180px;        /* fixed-ish width for buttons */
+  white-space: nowrap; /* prevent wrapping of header text */
+}
+
+.cell-actions {
+  text-align: right;
+}
+
+/* Inline actions wrapper */
+.actions {
+  display: inline-flex;
+  gap: 8px;
+}
+
+/* Base button (already defined); we add two variants */
+.btn--soft {
+  background: var(--row-alt);
+  border-color: var(--border);
+}
+
+.btn--soft:hover {
+  background: var(--row-hover);
+}
+
+.btn--danger {
+  background: linear-gradient(0deg, rgba(220,38,38,0.09), rgba(220,38,38,0.09));
+  border-color: rgba(220,38,38,0.35);
+  color: var(--danger);
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn--soft {
+    background: var(--row-alt);
+    border-color: var(--border);
+  }
+  .btn--danger {
+    background: linear-gradient(0deg, rgba(220,38,38,0.18), rgba(220,38,38,0.18));
+    border-color: rgba(239,68,68,0.45);
+    color: #f87171; /* red-400 */
+  }
+}
