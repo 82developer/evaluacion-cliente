@@ -1,5 +1,8 @@
 ﻿using Evaluacion.Application.Features.Clientes.Commands.CrearCliente;
+using Evaluacion.Application.Features.Clientes.Commands.EliminarCliente;
 using Evaluacion.Application.Features.Clientes.Commands.ModificarCliente;
+using Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente;
+using Evaluacion.Application.Features.Clientes.Queries.BuscarPorIdCliente;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,22 +33,22 @@ namespace Evaluacion.Api.Controllers
             var result = await _mediator.Send(new ModificarClienteCommand(id, request));
             return Ok(result);
         }
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody] CrearClienteCommand command)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var id = await _mediator.Send(command);
-            return Ok(id);
+            var response = await _mediator.Send(new EliminarClienteCommand(id));
+            return Ok(response);
         }
         [HttpGet]
-        public async Task<IActionResult> GetOne([FromBody] CrearClienteCommand command)
+        public async Task<IActionResult> GetOne([FromRoute] int id)
         {
-            var id = await _mediator.Send(command);
-            return Ok(id);
+            var response = await _mediator.Send(new BuscarPorIdClienteQuery(id));
+            return Ok(response);
         }
         [HttpGet("page")]
-        public async Task<IActionResult> GetPage([FromBody] CrearClienteCommand command)
+        public async Task<IActionResult> GetPage([FromBody] BuscarPaginadoClienteQuery query)
         {
-            var id = await _mediator.Send(command);
+            var id = await _mediator.Send(query);
             return Ok(id);
         }
 

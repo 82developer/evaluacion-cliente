@@ -11,6 +11,10 @@ namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPorIdCliente
     public class BuscarPorIdClienteQuery
         :IRequest<ClienteDto>
     {
+        public BuscarPorIdClienteQuery(int id)
+        {
+            Id = id;
+        }
         public int Id { get; set; }
     }
 }

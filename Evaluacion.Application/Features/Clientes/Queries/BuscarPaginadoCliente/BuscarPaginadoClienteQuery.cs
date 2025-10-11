@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Evaluacion.Application.Dtos;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +9,9 @@ using System.Threading.Tasks;
 namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente
 {
     public class BuscarPaginadoClienteQuery
+        :IRequest<IEnumerable<ClienteDto>>
     {
+        public string Ruc { get; set; }
+        public string RazonSocial { get; set; }
     }
 }

@@ -9,6 +9,10 @@ namespace Evaluacion.Application.Features.Clientes.Commands.EliminarCliente
 {
     public class EliminarClienteCommand: IRequest<bool>
     {
+        public EliminarClienteCommand(int id)
+        {
+            Id = id;
+        }
         public int Id { get; set; }
     }
 }
