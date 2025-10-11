@@ -14,7 +14,7 @@ namespace Evaluacion.Application.Features.Clientes.Commands.CrearCliente
                 .NotEmpty()
                 .WithMessage("El RazonSocial es obligatorio.");
             RuleFor(x => x.Telefono)
-                .GreaterThan(0)
+                .NotEmpty()
                 .WithMessage("El Telefono es obligatorio.");
             RuleFor(x => x.Correo)
                 .NotEmpty()

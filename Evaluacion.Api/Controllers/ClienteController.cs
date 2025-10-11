@@ -1,4 +1,5 @@
 ﻿using Evaluacion.Application.Features.Clientes.Commands.CrearCliente;
+using Evaluacion.Application.Features.Clientes.Commands.ModificarCliente;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,11 +21,14 @@ namespace Evaluacion.Api.Controllers
             var id = await _mediator.Send(command);
             return Ok(id);
         }
-        [HttpPatch]
-        public async Task<IActionResult> Update([FromBody] CrearClienteCommand command)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(
+            [FromRoute] int id,
+            [FromBody] ModificarClienteRequest request
+            )
         {
-            var id = await _mediator.Send(command);
-            return Ok(id);
+            var result = await _mediator.Send(new ModificarClienteCommand(id, request));
+            return Ok(result);
         }
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody] CrearClienteCommand command)

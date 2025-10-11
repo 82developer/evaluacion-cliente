@@ -18,27 +18,27 @@ namespace Evaluacion.Infrastructure.Repositories
             _db = db;
         }
 
-        public int Actualizar(Cliente cliente)
+        public async Task<int> Actualizar(Cliente cliente)
         {
             throw new NotImplementedException();
         }
 
-        public int Crear(Cliente cliente)
+        public async Task<int> Crear(Cliente cliente)
         {
             throw new NotImplementedException();
         }
 
-        public int Eliminar(int id)
+        public async Task<int> Eliminar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Cliente ObtenerPorId(int id)
+        public async Task<Cliente> ObtenerPorId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Cliente> ObtenerTodos(int pagina, int tamanoPagina)
+        public async Task<List<Cliente>> ObtenerTodos(int pagina, int tamanoPagina)
         {
             throw new NotImplementedException();
         }
