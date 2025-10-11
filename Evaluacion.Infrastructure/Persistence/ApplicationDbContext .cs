@@ -15,7 +15,7 @@ namespace Evaluacion.Infrastructure.Persistence
             : base(options) { }
 
         // Example DbSets
-        public DbSet<Cliente> Users => Set<Cliente>();
+        public DbSet<Cliente> Clientes => Set<Cliente>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
