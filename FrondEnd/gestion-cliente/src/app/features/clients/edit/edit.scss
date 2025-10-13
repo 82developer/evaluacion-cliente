@@ -1,0 +1,7 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.col-2 { grid-column: span 2 / span 2; }
+.actions { margin-top: 1rem; display: flex; gap: .5rem; }

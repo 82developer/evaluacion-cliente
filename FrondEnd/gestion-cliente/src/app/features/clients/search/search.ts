@@ -10,16 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-clients-search',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule],
-  template: `
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Search clients</mat-label>
-    <input matInput [formControl]="term" placeholder="RUC, Company, Email, etc.">
-    <button *ngIf="term.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  `,
-  styles: [`.w-full { width: 100%; margin-bottom: 1rem; }`]
+  templateUrl:'./search.html',
+  styleUrl:'./search.scss'
 })
 export class Search{
   @Output() search = new EventEmitter<string>();
