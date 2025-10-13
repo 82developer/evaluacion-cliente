@@ -1,4 +1,3 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000' // json-server default (see Section 9)
+  apiUrl: 'http://localhost:5110/api'
 };

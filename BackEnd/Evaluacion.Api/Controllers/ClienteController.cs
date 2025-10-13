@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Evaluacion.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/clientes")]
     public class ClienteController : ControllerBase
     {
         private readonly IMediator _mediator;

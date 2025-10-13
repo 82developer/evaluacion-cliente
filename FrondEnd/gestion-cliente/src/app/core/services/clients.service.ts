@@ -7,16 +7,14 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ClientsService {
   private http = inject(HttpClient);
-  private base = `${environment.apiUrl}/clients`;
+  private base = `${environment.apiUrl}/clientes`;
 
-  // List with optional search query
-  getAll(query?: string): Observable<Client[]> {
+  getAll(query?: string): Observable<any> {
     let params = new HttpParams();
     if (query && query.trim() !== '') {
-      // json-server supports ?q=
       params = params.set('q', query.trim());
     }
-    return this.http.get<Client[]>(this.base, { params });
+    return this.http.get<any>(this.base+'/page', { params });
   }
 
   getById(id: number): Observable<Client> {

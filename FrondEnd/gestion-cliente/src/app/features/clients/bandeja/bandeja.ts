@@ -108,7 +108,9 @@ export class Bandeja{
 
   load(query?: string) {
     this.api.getAll(query).subscribe({
-      next: list => this.dataSource.data = list,
+      next: list => {
+        this.dataSource.data = list.items
+      },
       error: () => this.snack.open('Error loading clients','Close',{ duration: 3000 })
     });
   }
