@@ -24,8 +24,8 @@ namespace Evaluacion.Infrastructure.Repositories
 
             entity.Ruc = cliente.Ruc;
             entity.RazonSocial = cliente.RazonSocial;
-            entity.Telefono = cliente.Telefono;
-            entity.Correo = cliente.Correo;
+            entity.TelefonoContacto = cliente.TelefonoContacto;
+            entity.CorreoContacto = cliente.CorreoContacto;
             entity.Direccion = cliente.Direccion;
 
             _db.Clientes.Update(entity);
@@ -84,8 +84,8 @@ namespace Evaluacion.Infrastructure.Repositories
                    Id = c.Id,
                    Ruc = c.Ruc,
                    RazonSocial = c.RazonSocial,
-                   Telefono = c.Telefono,
-                   Correo = c.Correo,
+                   TelefonoContacto = c.TelefonoContacto,
+                   CorreoContacto = c.CorreoContacto,
                    Direccion = c.Direccion
                })
                .ToListAsync();

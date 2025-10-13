@@ -21,8 +21,8 @@ export class ClientsService {
     return this.http.get<Client>(`${this.base}/${id}`);
   }
 
-  create(payload: Client): Observable<Client> {
-    return this.http.post<Client>(this.base, payload);
+  create(payload: any): Observable<any> {
+    return this.http.post<any>(this.base, payload);
   }
 
   update(id: number, payload: Client): Observable<Client> {

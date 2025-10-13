@@ -16,10 +16,10 @@ namespace Evaluacion.Application.Features.Clientes.Commands.ModificarCliente
             RuleFor(x => x.RazonSocial)
                 .NotEmpty()
                 .WithMessage("El RazonSocial es obligatorio.");
-            RuleFor(x => x.Telefono)
+            RuleFor(x => x.TelefonoContacto)
                 .NotEmpty()
                 .WithMessage("El Telefono es obligatorio.");
-            RuleFor(x => x.Correo)
+            RuleFor(x => x.CorreoContacto)
                 .NotEmpty()
                 .WithMessage("El Correo es obligatorio.");
         }

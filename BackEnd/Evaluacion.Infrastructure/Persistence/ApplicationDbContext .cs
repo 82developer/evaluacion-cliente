@@ -32,8 +32,8 @@ namespace Evaluacion.Infrastructure.Persistence
 
                     e.Property(x => x.Ruc).HasColumnName("RUC").HasMaxLength(11).IsRequired();
                     e.Property(x => x.RazonSocial).HasColumnName("RAZON_SOCIAL").HasMaxLength(200).IsRequired();
-                    e.Property(x => x.Telefono).HasColumnName("TELEFONO_CONTACTO").HasMaxLength(20);
-                    e.Property(x => x.Correo).HasColumnName("CORREO_CONTACTO").HasMaxLength(100);
+                    e.Property(x => x.TelefonoContacto).HasColumnName("TELEFONO_CONTACTO").HasMaxLength(20);
+                    e.Property(x => x.CorreoContacto).HasColumnName("CORREO_CONTACTO").HasMaxLength(100);
                     e.Property(x => x.Direccion).HasColumnName("DIRECCION").HasMaxLength(200);
                     //e.Property(x => x.FechaRegistro).HasColumnType("DATE");
                 });
