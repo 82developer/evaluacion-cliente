@@ -1,4 +1,6 @@
-﻿using Evaluacion.Domain;
+﻿using Evaluacion.Application.Dtos;
+using Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente;
+using Evaluacion.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,11 @@ namespace Evaluacion.Application.Repositories
         Task<bool> ActualizarAsync(Cliente cliente);
         Task<bool> EliminarAsync(int id);
         Task<Cliente?> ObtenerPorIdAsync(int id);
-        Task<List<Cliente>> ObtenerTodosAsync(int pagina, int tamanoPagina);
+        Task<PageResult<ClienteDto>> ObtenerTodosAsync(
+            string ruc,
+            string razonSocial,
+            int numeroPagina,
+            int tamanioPagina
+            );
     }
 }

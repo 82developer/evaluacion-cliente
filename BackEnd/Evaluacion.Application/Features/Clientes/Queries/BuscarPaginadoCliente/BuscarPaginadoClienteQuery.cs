@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente
 {
     public class BuscarPaginadoClienteQuery
-        :IRequest<IEnumerable<ClienteDto>>
+        :IRequest<PageResult<ClienteDto>>
     {
-        public string Ruc { get; set; }
-        public string RazonSocial { get; set; }
+        public string? Ruc { get; set; } = null;
+        public string? RazonSocial { get; set; } = null;
+        public int NumeroPagina { get; set; } = 1;
+        public int tamanioPagina { get; set; } = 10;
     }
 }

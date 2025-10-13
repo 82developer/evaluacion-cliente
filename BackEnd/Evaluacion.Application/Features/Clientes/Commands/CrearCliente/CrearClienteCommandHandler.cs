@@ -31,7 +31,7 @@ namespace Evaluacion.Application.Features.Clientes.Commands.CrearCliente
                 await tx.CommitAsync(cancellationToken);
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

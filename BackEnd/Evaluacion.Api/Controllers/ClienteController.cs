@@ -46,7 +46,7 @@ namespace Evaluacion.Api.Controllers
             return Ok(response);
         }
         [HttpGet("page")]
-        public async Task<IActionResult> GetPage([FromBody] BuscarPaginadoClienteQuery query)
+        public async Task<IActionResult> GetPage([FromQuery] BuscarPaginadoClienteQuery query)
         {
             var id = await _mediator.Send(query);
             return Ok(id);

@@ -1,4 +1,6 @@
-﻿using Evaluacion.Application.Repositories;
+﻿using Evaluacion.Application.Dtos;
+using Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente;
+using Evaluacion.Application.Repositories;
 using Evaluacion.Domain;
 using Evaluacion.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -54,9 +56,46 @@ namespace Evaluacion.Infrastructure.Repositories
             return result;
         }
 
-        public async Task<List<Cliente>> ObtenerTodosAsync(int pagina, int tamanoPagina)
+        public async Task<PageResult<ClienteDto>> ObtenerTodosAsync(
+            string ruc,
+            string razonSocial,
+            int numeroPagina,
+            int tamanioPagina
+            )
         {
-            throw new NotImplementedException();
+            var page = numeroPagina <= 0 ? 1 : numeroPagina;
+            var size = tamanioPagina <= 0 ? 10 : tamanioPagina;
+            IQueryable<Cliente> query = _db.Clientes.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(ruc))
+            {
+                query = query.Where(c => c.Ruc.ToLower().Contains(ruc));
+            }
+            if (!string.IsNullOrEmpty(razonSocial))
+            {
+                query = query.Where(c => c.RazonSocial.ToLower().Contains(razonSocial));
+            }
+            var total = await query.CountAsync();
+            var items = await query
+               .Skip((page - 1) * size)
+               .Take(size)
+               .Select(c => new ClienteDto
+               {
+                   Id = c.Id,
+                   Ruc = c.Ruc,
+                   RazonSocial = c.RazonSocial,
+                   Telefono = c.Telefono,
+                   Correo = c.Correo,
+                   Direccion = c.Direccion
+               })
+               .ToListAsync();
+            return new PageResult<ClienteDto>
+            {
+                Items = items,
+                TotalCount = total,
+                PageNumber = page,
+                PageSize = size
+            };
         }
     }
 }

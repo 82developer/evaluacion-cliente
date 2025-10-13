@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente
 {
     public class BuscarPaginadoClienteQueryHandler
-        : IRequestHandler<BuscarPaginadoClienteQuery, IEnumerable<ClienteDto>>
+        : IRequestHandler<BuscarPaginadoClienteQuery, PageResult<ClienteDto>>
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IMapper _mapper;
@@ -22,9 +22,15 @@ namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente
             _mapper = mapper;
         }
 
-        public Task<IEnumerable<ClienteDto>> Handle(BuscarPaginadoClienteQuery request, CancellationToken cancellationToken)
+        public async Task<PageResult<ClienteDto>> Handle(BuscarPaginadoClienteQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var page = await _clienteRepository.ObtenerTodosAsync(
+                request.Ruc,
+                request.RazonSocial,
+                request.NumeroPagina,
+                request.tamanioPagina
+                );
+            return page;
         }
     }
 }
