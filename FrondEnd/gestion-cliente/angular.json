@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mi-aplicacion-angular": {
+    "gestion-cliente": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -15,6 +19,7 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -22,13 +27,8 @@
               }
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+              "src/styles.scss"
+            ]
           },
           "configurations": {
             "production": {
@@ -58,10 +58,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mi-aplicacion-angular:build:production"
+              "buildTarget": "gestion-cliente:build:production"
             },
             "development": {
-              "buildTarget": "mi-aplicacion-angular:build:development"
+              "buildTarget": "gestion-cliente:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,6 +73,7 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -80,7 +81,7 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ]
           }
         }
@@ -88,6 +89,6 @@
     }
   },
   "cli": {
-    "analytics": "e0c39f8f-1ef1-44a1-afb3-63b1dfe77669"
+    "analytics": "f02f2b49-85fb-4acb-871a-e61ec8e51643"
   }
 }
