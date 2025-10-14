@@ -9,11 +9,8 @@ export class ClientsService {
   private http = inject(HttpClient);
   private base = `${environment.apiUrl}/clientes`;
 
-  getAll(query?: string): Observable<any> {
-    let params = new HttpParams();
-    if (query && query.trim() !== '') {
-      params = params.set('q', query.trim());
-    }
+  getAll(query?: any): Observable<any> {
+    let params = this.toHttpParams(query);
     return this.http.get<any>(this.base+'/page', { params });
   }
 
@@ -31,5 +28,15 @@ export class ClientsService {
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.base}/${id}`);
+  }
+  private toHttpParams(obj: Record<string, any>): HttpParams {
+    let params = new HttpParams();
+    for (const key in obj) {
+      const value = obj[key];
+      if (value !== undefined && value !== null && value !== '') {
+        params = params.set(key, value);
+      }
+    }
+    return params;
   }
 }

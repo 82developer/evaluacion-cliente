@@ -1,4 +1,4 @@
-import { Component, ViewChild, inject, signal, computed, effect } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -41,7 +41,7 @@ export class Bandeja{
     this.load();
   }
 
-  load(query?: string) {
+  load(query?: any) {
     this.api.getAll(query).subscribe({
       next: list => {
         this.dataSource.data = list.items
@@ -50,8 +50,8 @@ export class Bandeja{
     });
   }
 
-  onSearch(q: string) {
-    this.load(q);
+  onSearch(filter: any) {
+    this.load(filter);
   }
 
   newClient() {
