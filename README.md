@@ -33,6 +33,21 @@ public class CreateClienteHandler : IRequestHandler<CreateClienteCommand, int>
     // Lógica del comando
 }
 
+🧱 Repository Pattern
+
+Separa la lógica de acceso a datos, proporcionando una interfaz limpia entre la capa de dominio y la infraestructura.
+Esto facilita el mantenimiento y las pruebas unitarias, al abstraer la fuente de datos (por ejemplo, Oracle, SQL Server o MongoDB).
+
+🧮 Unit of Work
+
+Gestiona las transacciones de manera centralizada, asegurando la consistencia de los datos.
+Permite confirmar o revertir los cambios de manera controlada cuando se realizan múltiples operaciones sobre diferentes repositorios.
+
+🧰 AutoMapper
+
+Simplifica la conversión entre entidades del dominio y DTOs (Data Transfer Objects), reduciendo el código repetitivo y los errores manuales de mapeo.
+
+
 
 Script para la creacion de la tabla  CLIENTE
 ```sql
