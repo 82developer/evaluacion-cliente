@@ -47,6 +47,9 @@ Permite confirmar o revertir los cambios de manera controlada cuando se realizan
 
 Simplifica la conversión entre entidades del dominio y DTOs (Data Transfer Objects), reduciendo el código repetitivo y los errores manuales de mapeo.
 
+🧠 Integración con Entity Framework Core + Oracle
+
+Se utiliza Entity Framework Core 9 junto con el proveedor oficial de Oracle (Oracle.EntityFrameworkCore) para la persistencia de datos.
 
 
 Script para la creacion de la tabla  CLIENTE
