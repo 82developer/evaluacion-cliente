@@ -2,11 +2,6 @@
 using Evaluacion.Application.Dtos;
 using Evaluacion.Application.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente
 {
@@ -28,7 +23,7 @@ namespace Evaluacion.Application.Features.Clientes.Queries.BuscarPaginadoCliente
                 request.Ruc,
                 request.RazonSocial,
                 request.NumeroPagina,
-                request.tamanioPagina
+                request.TamanioPagina
                 );
             return page;
         }
