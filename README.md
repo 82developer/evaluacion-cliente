@@ -1,3 +1,39 @@
+# 🚀 Web API – Arquitectura Limpia con .NET Core
+
+Este proyecto es una **API RESTful** desarrollada con **.NET Core**, implementando una arquitectura moderna basada en los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**.  
+El objetivo es mantener un código **modular, mantenible, escalable y fácil de probar**.
+
+---
+
+## 🧩 Principales Patrones y Tecnologías Implementadas
+
+### 🧠 **CQRS (Command Query Responsibility Segregation)**
+Divide la lógica de la aplicación en dos responsabilidades:
+- **Commands:** operaciones que modifican el estado del sistema (crear, actualizar, eliminar).
+- **Queries:** operaciones que solo consultan información.
+
+Esto permite un mayor control, claridad y escalabilidad en el manejo de las operaciones.
+
+---
+
+### ⚙️ **MediatR**
+Se utiliza para implementar el **patrón Mediator**, eliminando dependencias directas entre los controladores y las capas de negocio.  
+Cada operación se maneja a través de **Requests y Handlers**, favoreciendo un flujo claro y desacoplado.
+
+**Ejemplo:**
+```csharp
+public class CreateClienteCommand : IRequest<int>
+{
+    public string Ruc { get; set; }
+    public string RazonSocial { get; set; }
+}
+
+public class CreateClienteHandler : IRequestHandler<CreateClienteCommand, int>
+{
+    // Lógica del comando
+}
+
+
 Script para la creacion de la tabla  CLIENTE
 ```sql
 CREATE TABLE CLIENTE (
